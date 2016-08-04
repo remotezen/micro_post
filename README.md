@@ -5,3 +5,5 @@ heroku login
 heroku keys:add
 heroku create
 git push heroku master
+#create a new branch
+git checkout -b static_pages
