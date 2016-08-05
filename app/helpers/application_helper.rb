@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def full_title(title)
+  def full_title(title="")
     unless title.blank?
       title += " | Micropost Application"
     else
