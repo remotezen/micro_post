@@ -56,4 +56,24 @@ class UserTest < ActiveSupport::TestCase
       assert_not duplicate_user.valid?
     end
 
+    test "assert username is unique" do
+      duplicate_user = @user.dup
+      duplicate_user.email = "baz@bar.com"
+      @user.save
+      assert_not duplicate_user.valid?
+    end
+    test "assert username is not case sensitive" do
+      duplicate_user = @user.dup
+      duplicate_user.email = "baz@bar.com"
+      duplicate_user.username = @user.username.upcase
+      @user.save
+      assert_not duplicate_user.valid?
+    end
+
+    test "assert is not case-sensitive" do
+      duplicate_user = @user.dup
+      duplicate_user.email = @user.email.upcase
+      @user.save
+      assert_not duplicate_user.valid?
+    end
 end
