@@ -4,8 +4,10 @@ one:
   name: fred hudson 
   email: fredjhudson@sympatico.ca 
   username: remotezen 
+  password_digest: foobar
 
 two:
   name: bobby boy 
   email: bob@bobby.com 
   username: bob 
+  password_digest: barfoo 
