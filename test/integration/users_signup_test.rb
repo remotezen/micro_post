@@ -18,8 +18,9 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_select 'div#error_explanation  ul li', text: "Email is invalid"
     assert_select 'div#error_explanation  ul li', text: "Username can't be blank"
     assert_select 'div#error_explanation  ul li', text: "Password confirmation doesn't match Password"
-    assert_not_equal flash[:success], text: "Welcome to the Micropost Application"
-    assert_redirected_to new_user_path
+    assert_not flash[:success]
+    assert flash[:error]
+    assert_response 200
 
   end
 end
