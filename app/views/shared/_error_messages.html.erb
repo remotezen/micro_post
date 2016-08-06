@@ -5,8 +5,8 @@
 		</div>
 			<ul>
 				<% @user.errors.full_messages.each do |m| %>
-					<li><%= m %></li>
-				<% end %>
+					<li><%=m %></li>
+				<%end%>
 			</ul>
 	</div>
 	<% end %>

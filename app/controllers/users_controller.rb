@@ -11,7 +11,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      flash[:success] = "Welcome to the Micropost Application"
+      redirect_to @user
     else
+      flash[:error] = "There was a problem with your submission"
       render 'new'
     end
   end

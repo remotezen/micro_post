@@ -12,5 +12,14 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                       }}
     end
     assert_template 'users/new'
+    assert_select 'div#error_explanation'
+    assert_select 'div.alert.alert-danger', text: "The form contains 5 errors"
+    assert_select 'div#error_explanation ul li', text: "Name can't be blank"
+    assert_select 'div#error_explanation  ul li', text: "Email is invalid"
+    assert_select 'div#error_explanation  ul li', text: "Username can't be blank"
+    assert_select 'div#error_explanation  ul li', text: "Password confirmation doesn't match Password"
+    assert_not_equal flash[:success], text: "Welcome to the Micropost Application"
+    assert_redirected_to new_user_path
+
   end
 end
