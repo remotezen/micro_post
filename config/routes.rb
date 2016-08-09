@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   get '/contact', to: 'static_pages#contact'
   get '/help', to: 'static_pages#help'
   resources :users
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
 
   root 'static_pages#home'
 end
