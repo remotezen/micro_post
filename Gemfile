@@ -1,11 +1,12 @@
 source 'https://rubygems.org'
 
 gem 'rails',        '5.0.0'
+gem 'foreman'
 gem 'bcrypt'
 gem 'pry'
 gem 'rails-pry'
 gem 'bootstrap-sass', '3.3.6'
-gem 'puma',         '3.4.0'
+gem 'puma',         '3.6.0'
 gem 'sass-rails',   '5.0.6'
 gem 'uglifier',     '3.0.0'
 gem 'coffee-rails', '4.2.1'
@@ -38,4 +39,4 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
+ #puma -b 'ssl://127.0.0.1:3000?key=/Users/tadas/.ssh/server.key&cert=/Users/tadas/.ssh/server.crt'
