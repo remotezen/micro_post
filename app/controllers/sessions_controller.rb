@@ -2,9 +2,8 @@ class SessionsController < ApplicationController
   def new
   end
   def create
-    credential = params[:session][:login].downcase
-    user = User.find_by(email: credential ) ||
-    User.find_by(username: credential)
+    credential = params[:session][:login]
+    user = User.find_by(email: credential ) || User.find_by(username: credential)
     if user && user.authenticate(params[:session][:password])
       log_in user
       redirect_to user
