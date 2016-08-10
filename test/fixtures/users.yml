@@ -4,7 +4,7 @@ one:
   name: fred hudson 
   email: fredjhudson@sympatico.ca 
   username: remotedzen 
-  password_digest: <%= User.digest('foobar')%>
+  password_digest: <%= User.digest('password')%>
 
 two:
   name: bobby boy 
@@ -16,4 +16,4 @@ fred:
   name: fred hudson 
   email: remotezen@bell.net 
   username: remotezen 
-  password_digest: <%= User.digest('foobar')%>
+  password_digest: <%= User.digest('password')%>

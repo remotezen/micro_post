@@ -20,4 +20,12 @@ class User < ApplicationRecord
     BCrypt::Password.create(string, cost: cost)
 
   end
+  def self.username_or_email(credential)
+    if VALID_EMAIL_REGEX.match(credential)
+      user = User.find_by(email: credential)
+    else
+      user = User.find_by( username: credential )
+    end
+    return user
+  end
 end
