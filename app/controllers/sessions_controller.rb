@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       log_in @user
      # __debug__ params[:session][:remember_me]
       params[:session][:remember_me] == "1" ? remember(@user) : forget(@user)
-      redirect_to @user
+      redirect_back_or @user
     else
       flash.now[:danger] ='Invalid credential/password combination'
       render 'new'

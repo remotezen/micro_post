@@ -7,8 +7,9 @@ class UsersEditTest < ActionDispatch::IntegrationTest
   end
 
   test "unsuccessful edit" do
-    #log_in_as(@user)
+    log_in_as(@user)
     get edit_user_path(@user)
+    assert_template 'users/edit'
     patch user_path(@user), params:{user:{name:"",
                                           username:"",
                                     email: "foo@invalid",
@@ -16,14 +17,11 @@ class UsersEditTest < ActionDispatch::IntegrationTest
                                     password_confirmation: "bar"
 
                                     }}
-    assert_template 'users/edit'
   end
   test "successful edit" do
 
-    #options = {password: @user.password}
-    #log_in_as(@user)
+    log_in_as(@user)
     get edit_user_path(@user)
-    assert_template 'users/edit'
     name = "barney ruble"
     email = "foo@valid.com"
     patch user_path(@user), params:{user:{name:name,
@@ -44,4 +42,22 @@ class UsersEditTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
+  test "successful edit with friendly forwarding" do
+    get edit_user_path(@user)
+    log_in_as(@user)
+    assert_redirected_to edit_user_path(@user)
+    username = "Foo bar".downcase
+    email = "foo@bar.com"
+    patch user_path(@user), params:{user:{username:username,
+                                          email: email,
+                                          password: "",
+                                          password_confirmation:""
+
+                                    }}
+    assert_not flash.empty?
+    assert_redirected_to @user
+    @user.reload
+    assert_equal username, @user.username
+    assert_equal email, @user.email
+  end
 end
