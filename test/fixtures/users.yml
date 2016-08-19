@@ -17,3 +17,4 @@ fred:
   email: remotezen@bell.net 
   username: remotezen 
   password_digest: <%= User.digest('password')%>
+    

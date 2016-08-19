@@ -6,4 +6,7 @@ module ApplicationHelper
       title = "Micropost Application"
     end
   end
+  def __debug__(str)
+    raise "\t\t\t\n\n\n###################\n\t\t\t HERE IS THE VALUE\t" + str.inspect + "\n####################"
+  end
 end
