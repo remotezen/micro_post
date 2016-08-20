@@ -5,6 +5,7 @@ one:
   email: fredjhudson@sympatico.ca 
   username: remotedzen 
   password_digest: <%= User.digest('password')%>
+  admin: false
 
 two:
   name: bobby boy 
@@ -17,4 +18,12 @@ fred:
   email: remotezen@bell.net 
   username: remotezen 
   password_digest: <%= User.digest('password')%>
+  admin: true
+<% 30.times do |n| %>
+user_<%= n %>:
+  id: <%=n%>
+  username:  <%= "User #{n}" %>
+  email: <%= "user-#{n}@example.com" %>
+  password_digest: <%= User.digest('password') %>
+<% end %>
     

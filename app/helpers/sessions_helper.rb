@@ -9,7 +9,7 @@ module SessionsHelper
     session[:forwarding_url] = request.original_url if request.get?
   end
 
-  def redirect_back_or(default)
+  def redirect_back_or(default=user_path(current_user))
     redirect_to session[:forwarding_url] || default
 
     session.delete(:forwarding_url)

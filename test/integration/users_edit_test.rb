@@ -4,6 +4,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
 
   def setup
     @user = users(:fred)
+    @other = users(:one)
   end
 
   test "unsuccessful edit" do
@@ -17,6 +18,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
                                     password_confirmation: "bar"
 
                                     }}
+    assert_template 'users/edit'
   end
   test "successful edit" do
 
@@ -59,5 +61,18 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     @user.reload
     assert_equal username, @user.username
     assert_equal email, @user.email
+  end
+  test "should not be able to update admin" do
+
+    log_in_as(@other)
+    assert_not @other.admin?
+    patch user_path(@other), params:{user:{
+                                          username: @other.username,
+                                          password: "",
+                                          password_confirmation:"",
+                                          admin: true
+
+                                    }}
+    assert_not @other.reload.admin?
   end
 end
