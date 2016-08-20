@@ -12,12 +12,21 @@ User.create!(name: "Fred Hudson",
              email:"remotezen@bell.net",
             password: "password",
             password_confirmation: "password",
-            admin: true)
+            admin: true,
+            activated: true,
+            activated_at: Time.zone.now
+            )
 99.times do |n|
   name = Faker::Name.name
   username = Faker::Superhero.name + "#{n}"
   email = Faker::Internet.email
   password = "password"
   User.create!(name:name, email:email,
-               username: username, password:password, password_confirmation:password)
+               username: username,
+               password:password,
+               password_confirmation:password,
+               activated: true,
+               activated_at: Time.zone.now
+
+              )
 end

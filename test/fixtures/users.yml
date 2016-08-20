@@ -6,12 +6,16 @@ one:
   username: remotedzen 
   password_digest: <%= User.digest('password')%>
   admin: false
+  activated: true
+  activated_at: <%=Time.zone.now%>
 
 two:
   name: bobby boy 
   email: bob@bobby.com 
   username: bob 
   password_digest: <%= User.digest('barfoo')%>
+  activated: true
+  activated_at: <%=Time.zone.now%>
 
 fred:
   name: fred hudson 
@@ -19,11 +23,16 @@ fred:
   username: remotezen 
   password_digest: <%= User.digest('password')%>
   admin: true
+  activated: true
+  activated_at: <%=Time.zone.now%>
 <% 30.times do |n| %>
+
 user_<%= n %>:
   id: <%=n%>
   username:  <%= "User #{n}" %>
   email: <%= "user-#{n}@example.com" %>
   password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%=Time.zone.now%>
 <% end %>
     
