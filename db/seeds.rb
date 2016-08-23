@@ -21,7 +21,8 @@ User.create!(name: "Fred Hudson",
   username = Faker::Superhero.name + "#{n}"
   email = Faker::Internet.email
   password = "password"
-  User.create!(name:name, email:email,
+  User.create!(name:name,
+               email:email,
                username: username,
                password:password,
                password_confirmation:password,
@@ -29,4 +30,9 @@ User.create!(name: "Fred Hudson",
                activated_at: Time.zone.now
 
               )
+end
+users = User.order(:created_at).take(6)
+50.times do
+  content = Faker::Lorem.sentence(5)
+  users.each{|u| u.microposts.create!(content: content)}
 end
