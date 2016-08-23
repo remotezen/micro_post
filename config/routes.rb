@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
   resources :account_activations, only: [:edit]
-  resource :password_resets, only: [:new, :create, :edit, :update]
+  resources :password_resets, only: [:new, :create, :edit, :update]
 
 end
 

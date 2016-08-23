@@ -23,6 +23,7 @@ class PasswordResetsController < ApplicationController
 
   def edit
   end
+
   def create
     @user = User.find_by(email: params[:password_reset][:email].downcase)
     if @user
@@ -37,22 +38,26 @@ class PasswordResetsController < ApplicationController
   end
 
   private
+
     def user_params
-      params.require(:user).permite(:password, :password_confirmation)
+      params.require(:user).permit(:password, :password_confirmation)
     end
+
     def get_user
       @user = User.find_by(email: params[:email])
     end
+
     def valid_user
       unless (@user && @user.activated? &&
-          @user.authenicated?(:reset, params[:id]))
+          @user.authenticated?(:reset, params[:id]))
         redirect_to root_url
       end
     end
+
     def check_expiration
-      if @user.password_reset_expired?
+      if password_reset_expired?
         flash[:danger] = "Password reset has expired"
-        redirect_to new_password_resets_url
+        redirect_to new_password_reset_url
       end
     end
 
