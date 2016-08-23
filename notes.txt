@@ -4,6 +4,7 @@ heroku pg:reset DATABASE
 heroku run rails db:migrate
 heroku run rails db:seed
 heroku restart
+rails g model Micropost content:text user:references
 
 
 rails g mailer UserMailer account_activation password_reset
