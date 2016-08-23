@@ -3,11 +3,21 @@
 one:
   content: MyText
   created_at: <%= 10.minutes.ago %>
+  user: fred
 
-two:
+latest:
   content: MyText
   created_at: <%= 15.minutes.ago %>
+  user: fred
 
 most_recent:
   content: MyText
   created_at: <%=Time.zone.now  %>
+  user: fred
+
+<%30.times do |n|%>    
+micropost_<%=n%>:
+  content: <%=Faker::Lorem.sentence(5)%>
+  created_at: <%=42.days.ago%>  
+  user: fred
+ <%end%>
