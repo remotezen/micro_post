@@ -16,6 +16,9 @@ gem 'jquery-rails', '4.1.1'
 gem 'turbolinks',   '5.0.0'
 gem 'jbuilder',     '2.4.1'
 
+gem 'carrierwave'
+gem 'mini_magick'
+
 group :development, :test do
   gem 'sqlite3', '1.3.11'
   gem 'byebug',  '9.0.0', platform: :mri

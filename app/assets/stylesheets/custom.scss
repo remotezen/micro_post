@@ -98,11 +98,12 @@ footer {
 aside {
 	section.user_info{
 		margin-top:20px;
+	}
 		textarea{
 			height: 100px;
 			margin-bottom: 5px;
-		}
 	}
+}
 	span.picture {
 		margin-top:10px;
 		input{
@@ -130,7 +131,6 @@ aside {
 			margin-top: 0px;
 		}
 	}
-}
 .gravatar{
 	float:left;
 	margin-right: 10px;

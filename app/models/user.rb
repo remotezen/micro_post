@@ -80,6 +80,9 @@ class User < ApplicationRecord
     return false if digest.nil?
     BCrypt::Password.new(digest).is_password?(token)
   end
+  def feed
+    microposts
+  end
   private
   def create_activation_digest
     self.activation_token = User.new_token

@@ -4,12 +4,10 @@
 		<%= render 'layouts/header' %>
   </head>
   <body>
-		<%=render partial: 'layouts/menu' %>
-	</div>
-</header>
+			<%=render partial: 'layouts/menu' %>
 		<div class="container">
 			<%= yield %>
+			<%= render 'layouts/footer' %>
 		</div>
-		<%= render 'layouts/footer' %>
   </body>
 </html>
