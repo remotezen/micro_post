@@ -8,3 +8,21 @@ rails g model Micropost content:text user:references
 
 
 rails g mailer UserMailer account_activation password_reset
+
+Relationships methods
+#####################
+
+active_relationship.follower 	
+##Returns the follower
+
+active_relationship.followed 	
+##Returns the followed user
+
+user.active_relationships.create(followed_id: other_user.id) 	
+##Creates an active relationship associated with user
+
+user.active_relationships.create!(followed_id: other_user.id) 	
+##Creates an active relationship associated with user (exception on failure)
+
+user.active_relationships.build(followed_id: other_user.id)
+###Returns a new Relationship object associated with user
