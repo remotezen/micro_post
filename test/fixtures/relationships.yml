@@ -1,2 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+fred_follower:
+  follower: lana 
+  followed: fred
 
+fred_following:    
+  follower: fred
+  followed: lana 
