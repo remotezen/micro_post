@@ -10,20 +10,22 @@ class UserTest < ActiveSupport::TestCase
   test "user should be valid" do
     assert @user.valid?
   end
+
   test "name should be present" do
     @user.name = " "
     assert_not @user.valid?
   end
+
   test "user name should be present" do
     @user.username = " "
     assert_not @user.valid?
   end
-   test "assert email is present" do
+  test "assert email is present" do
      @user.email = " "
      assert_not @user.valid?
-   end
-    test "assert name is less then 51 characters" do
-      @user.name = "a" * 51
+  end
+  test "assert name is less then 51 characters" do
+     @user.name = "a" * 51
       assert_not @user.valid?
     end
      test "assert username is less than 51 characters" do
@@ -101,7 +103,20 @@ class UserTest < ActiveSupport::TestCase
       assert_difference 'Micropost.count', -1 do
         @user.destroy
       end
-
+    end
+    test "feed should have the right posts" do
+      fred = users(:fred)
+      lana = users(:lana)
+      archer = users(:archer)
+      lana.microposts.each do |post_following|
+        assert fred.feed.include?(post_following)
+      end
+      lana.microposts.each do |post_self|
+        assert lana.feed.include?(post_self)
+      end
+      archer.microposts.each do |not_followed|
+        assert_not lana.feed.include?(not_followed)
+      end
     end
 
 end
